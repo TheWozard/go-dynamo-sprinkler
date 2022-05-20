@@ -1,0 +1,14 @@
+services:
+  dynamodb:
+    image: amazon/dynamodb-local
+    restart: always
+    volumes:
+      - ./data:/home/dynamodblocal/data
+    ports:
+      - 8000:8000
+    command: "-jar DynamoDBLocal.jar -sharedDb -dbPath /home/dynamodblocal/data/"
+  dynamo-admin:
+    image: taydy/dynamodb-manager
+    restart: always
+    ports:
+      - 8080:80
